@@ -1,22 +1,17 @@
 // useQuery hooks
-import { gql, useQuery } from '@apollo/client'
-// ClientRow component
-import ClientRow from './ClientRow'
+import { gql, useQuery } from '@apollo/client';
 
-const GET_CLIENTS = gql`
-    query getClients {
-        clients {
-            id
-            name
-            email
-                phone
-          }
-    }
-`
+import ClientRow from './ClientRow';
+import Spinner from './Spinner';
+
+// GET_CLIENT query from graphql
+import { GET_CLIENTS } from '../queries/clientQueries';
+
+
 
 export default function Clients() {
     const { loading, error, data } = useQuery(GET_CLIENTS)
-    if (loading) return <p>Loading...</p>
+    if (loading) return <Spinner/>
     if (error) return <p>Something Went Wrong</p>
     return (
         // ternary statement - not loading and not error display Client table
