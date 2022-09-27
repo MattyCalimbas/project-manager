@@ -1,6 +1,10 @@
 import Header from "./components/Header"
 import Clients from "./components/Clients";
+import AddClientModal from "./components/AddClientModal";
+
+
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -23,7 +27,7 @@ const cache = new InMemoryCache({
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
-  cache
+  cache,
 })
 
 function App() {
@@ -32,6 +36,7 @@ function App() {
       <ApolloProvider client={client}>
         <Header/>
         <div className="container">
+          <AddClientModal />
           <Clients/>
         </div>
       </ApolloProvider>
