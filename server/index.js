@@ -15,6 +15,8 @@ connectDB();
 // Enable CORS middleware
 app.use(cors());
 
+//Test note for pushing to github
+
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: process.env.NODE_ENV === 'development'
